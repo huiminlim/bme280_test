@@ -2,6 +2,8 @@
 
 This repo contains test code to verify porting of Arduino's SPI and Adafruit's BME280 C++ library to C.
 
+Development was done in Atmel Studio 7.0 and tested on an Arduino Uno with ATmega328P microcontroller.
+
 This is part of FYP project to use Bosch's BME280 sensor in C.
 
 ## Credits
