@@ -1,4 +1,4 @@
-# bme280_test
+# Interfacing BME280 sensor in C Language
 
 This repo contains test code to verify porting of SPI and Adafruit's BME280 C++ library to C language.
 
