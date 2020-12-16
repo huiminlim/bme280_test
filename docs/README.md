@@ -1,6 +1,6 @@
 # Interfacing BME280 sensor in C
 
-This repo contains test code to verify porting of SPI and Adafruit's BME280 C++ library to C.
+This repo contains test code to verify porting of Arduino's SPI and Adafruit's BME280 C++ library to C.
 
 This is part of FYP project to use Bosch's BME280 sensor in C.
 
