@@ -1,9 +1,9 @@
 /*
- * spi.h
- *
- * Created: 16/12/2020 4:26:42 PM
- *  Author: user
- */ 
+    spi.h
+
+    Created: 16/12/2020 4:26:42 PM
+    Author: user
+*/
 
 #include <ioport.h>
 
@@ -37,3 +37,4 @@ void spi_init(void);
 uint8_t get_clock_divider_bits(uint8_t clock);
 void set_clock_divider(uint8_t clockDiv);
 void spi_begin_txn(uint32_t clock, uint8_t bit_order, uint8_t data_mode);
+void spi_end_txn(void);
