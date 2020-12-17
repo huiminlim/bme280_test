@@ -29,3 +29,13 @@ They include:
 * [Delay Routine](https://asf.microchip.com/docs/latest/saml21/html/group__group__common__services__delay.html)
 
 * [IOPORT Service](https://asf.microchip.com/docs/latest/saml21/html/group__ioport__group.html#gabc09edad7c3187dec63ce47e6f1b3c51)
+
+## Development Status
+
+Currently, the temperature reading function is not working as the ADC value read from the sensor is not correct. 
+
+Debugging efforts are underway.
+
+This is the error output currently:
+
+![Error output](Capture.PNG)
