@@ -19,3 +19,13 @@ Credits goes to them.
 ## BME280
 
 Bosch's BME280 humidity sensor is used and the datasheet can be found [here](https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/).
+
+## Dependencies
+
+Development was done in Atmel Studio 7.0 and certain Atmel Software Framework (ASF) libraries were used.
+
+They include:
+
+* [Delay Routine](https://asf.microchip.com/docs/latest/saml21/html/group__group__common__services__delay.html)
+
+* [IOPORT Service](https://asf.microchip.com/docs/latest/saml21/html/group__ioport__group.html#gabc09edad7c3187dec63ce47e6f1b3c51)
