@@ -249,4 +249,4 @@ void read_coefficients(void);
 void set_sampling(sensor_mode mode, sensor_sampling temp_sampling,
                   sensor_sampling press_sampling, sensor_sampling hum_sampling,
                   sensor_filter filter, standby_duration duration);
-float bme280_read_temperature(void);
+int32_t bme280_read_temperature(void);

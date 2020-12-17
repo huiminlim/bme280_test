@@ -37,13 +37,13 @@ struct ctrl_hum hum_reg = {
 */
 int bme280_init(void) {
     // Check if read successfully from sensor ID
-    //uint8_t sensor_id = read8(BME280_REGISTER_CHIPID);
+    uint8_t sensor_id = read8(BME280_REGISTER_CHIPID);
 
-    //printf("Sensor ID: 0x%x\r\n", sensor_id);
+    printf("Sensor ID: 0x%x\r\n", sensor_id);
 
-    //if (sensor_id != 0x60) {
-    //    return BME_INIT_ERR;
-    //}
+    if (sensor_id != 0x60) {
+        return BME_INIT_ERR;
+    }
 
 
     // Reset device with soft-reset
@@ -63,9 +63,9 @@ int bme280_init(void) {
     read_coefficients();
 
     // Set default sampling
-    set_sampling(MODE_NORMAL, SAMPLING_X16,
-                 SAMPLING_X16, SAMPLING_X16, FILTER_OFF,
-                 STANDBY_MS_0_5);
+    //set_sampling(MODE_NORMAL, SAMPLING_X16,
+    //             SAMPLING_X16, SAMPLING_X16, FILTER_OFF,
+    //             STANDBY_MS_0_5);
 
     delay_ms(200);
 
@@ -76,7 +76,7 @@ int bme280_init(void) {
      @brief  Returns the temperature from the sensor
      @returns the temperature read from the device
 */
-float bme280_read_temperature(void) {
+int32_t bme280_read_temperature(void) {
     int32_t var1, var2;
     int32_t adc_T = read24(BME280_REGISTER_TEMPDATA);
 
@@ -85,7 +85,6 @@ float bme280_read_temperature(void) {
         return BME_READ_TEMPERATURE_ERR;
     }
 
-    // Problem is here
     adc_T = (adc_T >> 4);
 
     printf("adc: %ld\r\n", adc_T);
@@ -102,8 +101,8 @@ float bme280_read_temperature(void) {
     int32_t t_fine_adjust = 0;
 
     int32_t t_fine = var1 + var2 + t_fine_adjust;
-    float T = (t_fine * 5 + 128) >> 8;
-    return T / 100;
+    int32_t T = (t_fine * 5 + 128) >> 8;
+    return T;
 }
 
 /*
@@ -126,24 +125,29 @@ void read_coefficients(void) {
     bme280_calib_data_read.dig_T1 = read16_LE(BME280_REGISTER_DIG_T1);
     bme280_calib_data_read.dig_T2 = readS16_LE(BME280_REGISTER_DIG_T2);
     bme280_calib_data_read.dig_T3 = readS16_LE(BME280_REGISTER_DIG_T3);
-    bme280_calib_data_read.dig_P1 = read16_LE(BME280_REGISTER_DIG_P1);
-    bme280_calib_data_read.dig_P2 = readS16_LE(BME280_REGISTER_DIG_P2);
-    bme280_calib_data_read.dig_P3 = readS16_LE(BME280_REGISTER_DIG_P3);
-    bme280_calib_data_read.dig_P4 = readS16_LE(BME280_REGISTER_DIG_P4);
-    bme280_calib_data_read.dig_P5 = readS16_LE(BME280_REGISTER_DIG_P5);
-    bme280_calib_data_read.dig_P6 = readS16_LE(BME280_REGISTER_DIG_P6);
-    bme280_calib_data_read.dig_P7 = readS16_LE(BME280_REGISTER_DIG_P7);
-    bme280_calib_data_read.dig_P8 = readS16_LE(BME280_REGISTER_DIG_P8);
-    bme280_calib_data_read.dig_P9 = readS16_LE(BME280_REGISTER_DIG_P9);
-    bme280_calib_data_read.dig_H1 = read8(BME280_REGISTER_DIG_H1);
-    bme280_calib_data_read.dig_H2 = readS16_LE(BME280_REGISTER_DIG_H2);
-    bme280_calib_data_read.dig_H3 = read8(BME280_REGISTER_DIG_H3);
-    bme280_calib_data_read.dig_H4 = ((int8_t)read8(BME280_REGISTER_DIG_H4) << 4) | (read8(
-                                        BME280_REGISTER_DIG_H4 + 1) & 0xF);
-    bme280_calib_data_read.dig_H5 = ((int8_t)read8(BME280_REGISTER_DIG_H5 + 1) << 4) | (read8(
-                                        BME280_REGISTER_DIG_H5) >> 4);
-    bme280_calib_data_read.dig_H6 = (int8_t)read8(
-                                        BME280_REGISTER_DIG_H6);
+
+    printf("\r\bme280_calib_data_read.dig_T1: %d\r\n", bme280_calib_data_read.dig_T1);
+    printf("bme280_calib_data_read.dig_T2: %d\r\n", bme280_calib_data_read.dig_T2);
+    printf("bme280_calib_data_read.dig_T3: %d\r\n\r\n", bme280_calib_data_read.dig_T3);
+
+    //bme280_calib_data_read.dig_P1 = read16_LE(BME280_REGISTER_DIG_P1);
+    //bme280_calib_data_read.dig_P2 = readS16_LE(BME280_REGISTER_DIG_P2);
+    //bme280_calib_data_read.dig_P3 = readS16_LE(BME280_REGISTER_DIG_P3);
+    //bme280_calib_data_read.dig_P4 = readS16_LE(BME280_REGISTER_DIG_P4);
+    //bme280_calib_data_read.dig_P5 = readS16_LE(BME280_REGISTER_DIG_P5);
+    //bme280_calib_data_read.dig_P6 = readS16_LE(BME280_REGISTER_DIG_P6);
+    //bme280_calib_data_read.dig_P7 = readS16_LE(BME280_REGISTER_DIG_P7);
+    //bme280_calib_data_read.dig_P8 = readS16_LE(BME280_REGISTER_DIG_P8);
+    //bme280_calib_data_read.dig_P9 = readS16_LE(BME280_REGISTER_DIG_P9);
+    //bme280_calib_data_read.dig_H1 = read8(BME280_REGISTER_DIG_H1);
+    //bme280_calib_data_read.dig_H2 = readS16_LE(BME280_REGISTER_DIG_H2);
+    //bme280_calib_data_read.dig_H3 = read8(BME280_REGISTER_DIG_H3);
+    //bme280_calib_data_read.dig_H4 = ((int8_t)read8(BME280_REGISTER_DIG_H4) << 4) | (read8(
+    //BME280_REGISTER_DIG_H4 + 1) & 0xF);
+    //bme280_calib_data_read.dig_H5 = ((int8_t)read8(BME280_REGISTER_DIG_H5 + 1) << 4) | (read8(
+    //BME280_REGISTER_DIG_H5) >> 4);
+    //bme280_calib_data_read.dig_H6 = (int8_t)read8(
+    //BME280_REGISTER_DIG_H6);
 }
 
 /*!
