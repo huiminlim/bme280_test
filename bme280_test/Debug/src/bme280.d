@@ -22,7 +22,16 @@ src/bme280.d src/bme280.o: ../src/bme280.c ../src/bme280.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  ../src/ASF/common/services/ioport/mega/ioport.h ../src/uart.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
+ ../src/ASF/common/services/delay/delay.h \
+ ../src/ASF/common/services/clock/sysclk.h ../src/config/conf_clock.h \
+ ../src/ASF/common/services/clock/mega/sysclk.h \
+ ../src/ASF/common/boards/board.h \
+ ../src/ASF/mega/boards/atmega328p_xplained_mini/atmega328p_xplained_mini.h \
+ ../src/ASF/mega/boards/atmega328p_xplained_mini/led.h \
+ ../src/ASF/common/services/gpio/gpio.h \
+ ../src/ASF/common/services/gpio/mega_gpio/mega_gpio.h \
+ ../src/ASF/common/services/delay/mega/cycle_counter.h
 
 ../src/bme280.h:
 
@@ -79,3 +88,23 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
+
+../src/ASF/common/services/delay/delay.h:
+
+../src/ASF/common/services/clock/sysclk.h:
+
+../src/config/conf_clock.h:
+
+../src/ASF/common/services/clock/mega/sysclk.h:
+
+../src/ASF/common/boards/board.h:
+
+../src/ASF/mega/boards/atmega328p_xplained_mini/atmega328p_xplained_mini.h:
+
+../src/ASF/mega/boards/atmega328p_xplained_mini/led.h:
+
+../src/ASF/common/services/gpio/gpio.h:
+
+../src/ASF/common/services/gpio/mega_gpio/mega_gpio.h:
+
+../src/ASF/common/services/delay/mega/cycle_counter.h:
